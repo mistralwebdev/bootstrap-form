@@ -3,6 +3,7 @@
 namespace Watson\BootstrapForm;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Collective\Html\FormBuilder;
 use Collective\Html\HtmlBuilder;
@@ -524,11 +525,15 @@ class BootstrapForm
     /**
      * Create a select box field.
      */
-    public function select(string $name, null|string|HtmlString $label = null, array $list = [], ?string $selected = null, array $options = []): string
+    public function select(string $name, null|string|HtmlString $label = null, array|Collection $list = [], ?string $selected = null, array $options = []): string
     {
         $label = $this->getLabelTitle($label, $name);
 
         $inputElement = isset($options['prefix']) ? $options['prefix'] : '';
+
+        if(gettype($list) == 'object' && get_class($list) == 'Illuminate\Support\Collection'){
+            $list = $list->toArray();
+        }
 
         $options = $this->getFieldOptions($options, $name);
         $inputElement .= $this->form->select($name, $list, $selected, $options);
