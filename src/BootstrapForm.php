@@ -318,7 +318,7 @@ class BootstrapForm
     /**
      * Create a collection of Bootstrap checkboxes.
      */
-    public function checkboxes(string $name, null|string|HtmlString $label = null, array $choices = [], array $checkedValues = [], bool $inline = false, array $options = []): string
+    public function checkboxes(string $name, null|string|HtmlString $label = null, array|Collection $choices = [], array $checkedValues = [], bool $inline = false, array $options = []): string
     {
         $elements = '';
 
