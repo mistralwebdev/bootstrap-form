@@ -525,7 +525,7 @@ class BootstrapForm
     /**
      * Create a select box field.
      */
-    public function select(string $name, null|string|HtmlString $label = null, array|Collection $list = [], ?string $selected = null, array $options = []): string
+    public function select(string $name, null|string|bool|HtmlString $label = null, array|Collection $list = [], ?string $selected = null, array $options = []): string
     {
         $label = $this->getLabelTitle($label, $name);
 
